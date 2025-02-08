@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   mongodb:
     image: mongo
@@ -9,13 +10,15 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: event_planner_db
     volumes:
-      - ./mongo-init/init.js:/docker-entrypoint-initdb.d/init.js:ro
+      - ./mongo-init/init.js:/docker-entrypoint-initdb.d/init.js:ro  # ✅ Ensure this is here
     networks:
       - my_network
 
+
   springboot-app:
-    build: .
+    build: ./spring-boot  # ✅ Ensure this points to the spring-boot directory
     container_name: springboot-app
     restart: always
     ports:
@@ -24,6 +27,18 @@ services:
       - SPRING_DATA_MONGODB_URI=mongodb://root:root@mongodb:27017/event_planner_db?authSource=admin
     depends_on:
       - mongodb
+    networks:
+      - my_network
+
+
+  frontend:
+    build: ./frontend
+    container_name: vite-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - springboot-app
     networks:
       - my_network
 

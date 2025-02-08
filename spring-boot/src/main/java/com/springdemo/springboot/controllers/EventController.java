@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/events")
+@CrossOrigin("*")
 public class EventController {
     @Autowired
     EventRepository eventRepo;
