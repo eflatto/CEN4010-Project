@@ -36,11 +36,12 @@ services:
     container_name: vite-frontend
     restart: always
     ports:
-      - "3000:3000"
+      - "5173:5173"  # ✅ Expose Vite dev server
     depends_on:
       - springboot-app
     networks:
       - my_network
+
 
 networks:
   my_network:
