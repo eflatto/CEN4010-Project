@@ -22,20 +22,10 @@ Ensure you have the following installed before running the project:
 
 ## ⚡ Getting Started
 
-### 1️⃣ Clone the Repository
-```sh
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-
-## 2️⃣ Running the Project
-
-### Option 1: Run with Docker (Recommended) 🐳
-
-To containerize and run the project using Docker, follow these steps:
+run the project using Docker, follow these steps:
 
 #### Build the Docker Image
 
-```sh
 docker build -t event-management-app .
 
 docker-compose up -d
