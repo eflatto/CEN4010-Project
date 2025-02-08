@@ -15,8 +15,6 @@ This is a **Spring Boot REST API** designed to manage events using **MongoDB**. 
 
 ## 📌 Prerequisites
 Ensure you have the following installed before running the project:
-
-- **Java 17+** → [Download Here](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 - **Docker & Docker Compose** → [Download Here](https://docs.docker.com/get-docker/)
 ---
 
