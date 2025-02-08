@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo
+    container_name: my_mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - ./mongo-init/init.js:/docker-entrypoint-initdb.d/init.js:ro
+    networks:
+      - my_network
+
+  springboot-app:
+    build: .
+    container_name: springboot-app
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://root:root@mongodb:27017/event_planner_db?authSource=admin
+    depends_on:
+      - mongodb
+    networks:
+      - my_network
+
+networks:
+  my_network:

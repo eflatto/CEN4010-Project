@@ -2,7 +2,6 @@ package com.springdemo.springboot.models;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
-import java.util.Date;
 import java.util.List;
 
 @Document(collection = "events")
@@ -15,7 +14,7 @@ public class Event {
     private String location; // Venue or online meeting link
     private String description; // Event description
     private boolean isPublic; // Whether the event is public or private
-    private Date date; // Event date
+    private String date; // Event date
     private String organizer; // Event organizer
     private List<String> guestList; // List of guest names
     private double budget; // Budget for the event
@@ -26,7 +25,7 @@ public class Event {
     }
 
     // Constructor with all fields
-    public Event(String name, String location, String description, boolean isPublic, Date date,
+    public Event(String name, String location, String description, boolean isPublic, String date,
                  String organizer, List<String> guestList, double budget, String reminder) {
         this.name = name;
         this.location = location;
@@ -80,11 +79,11 @@ public class Event {
         this.isPublic = isPublic;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
