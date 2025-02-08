@@ -1,30 +1,51 @@
-# CEN4010 - Event Management API
+# Event Planner App
 
-This is a **Spring Boot REST API** designed to manage events using **MongoDB**. The API supports **CRUD operations** (Create, Read, Update, Delete) for event records and is built to be **easily deployable** with Docker.
+This is a **full-stack event planner application** built using **Spring Boot**, **MongoDB**, and **React**. The app allows users to create and view events, with a backend API handling data storage.
 
----
+## 🛠️ Tech Stack
 
-## 🚀 Features
-- ✅ **CRUD operations** for event management (Create, Read, Update, Delete)
-- ✅ **MongoDB integration** for efficient data storage
-- ✅ **Spring Boot REST API** with well-structured endpoints
-- ✅ **Docker support** for seamless deployment
-- ✅ **Configuration flexibility** via `application.properties`
+- **Backend**: Java, Spring Boot, MongoDB
+- **Frontend**: React (Vite)
+- **Database**: MongoDB (Dockerized)
+- **Containerization**: Docker & Docker Compose
 
 ---
 
-## 📌 Prerequisites
-Ensure you have the following installed before running the project:
-- **Docker & Docker Compose** → [Download Here](https://docs.docker.com/get-docker/)
----
+## 🚀 Getting Started
 
-## ⚡ Getting Started
+### **1. Clone the Repository**
 
-run the project using Docker, follow these steps:
+```sh
+git clone https://github.com/your-repo/event-planner.git
+cd event-planner
 
-#### Build the Docker Image
+## 2. Install Dependencies
 
-docker build -t event-management-app .
+Ensure you have Docker and Docker Compose installed on your machine.
 
-docker-compose up -d
+### Backend
+cd spring-boot
+./gradlew build  # Backend build
+
+cd frontend
+npm install
+
+
+docker-compose up --build
+
+This will:
+
+Start a MongoDB instance on localhost:27017
+Start the Spring Boot API on http://localhost:8080
+Start the React frontend on http://localhost:5173
+Stopping the Containers
+To stop the application:
+
+docker-compose down
+
+
+
+
+
+
 
