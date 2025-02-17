@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // ✅ Import Link for navigation
 
 interface Event {
     id: string;
@@ -24,7 +25,10 @@ const Home = () => {
             {/* Navbar */}
             <nav className="bg-blue-600 text-white py-4 px-6 flex justify-between items-center">
                 <h1 className="text-2xl font-bold">Event Planner</h1>
-                <button className="bg-white text-blue-600 px-4 py-2 rounded">Create Event</button>
+                {/* ✅ Use Link instead of button to navigate to Create Event page */}
+                <Link to="/create-event" className="bg-white text-blue-600 px-4 py-2 rounded">
+                    Create Event
+                </Link>
             </nav>
 
             {/* Events List */}

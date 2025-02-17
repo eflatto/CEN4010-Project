@@ -16,7 +16,7 @@ public class EventController {
     @Autowired
     EventRepository eventRepo;
 
-    @PostMapping("/event")
+    @PostMapping("/events")
     public ResponseEntity<Event> createEvent(@RequestBody Event event) {
         Event savedEvent = eventRepo.save(event);
         return ResponseEntity.ok(savedEvent);
