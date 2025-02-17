@@ -1,44 +1,30 @@
 package com.springdemo.springboot.models;
 
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
-import java.util.List;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "events")
 public class Event {
-
     @Id
-    private String id; // Event ID
+    private String id;
+    private String title;
+    private String date;
+    private String location;
+    private String createdBy; // User ID of the organizer
+    private String description;
 
-    private String name; // Event name
-    private String location; // Venue or online meeting link
-    private String description; // Event description
-    private boolean isPublic; // Whether the event is public or private
-    private String date; // Event date
-    private String organizer; // Event organizer
-    private List<String> guestList; // List of guest names
-    private double budget; // Budget for the event
-    private String reminder; // Reminder for the event (can be a date or message)
-
-    // Default constructor
     public Event() {
     }
 
-    // Constructor with all fields
-    public Event(String name, String location, String description, boolean isPublic, String date,
-                 String organizer, List<String> guestList, double budget, String reminder) {
-        this.name = name;
-        this.location = location;
-        this.description = description;
-        this.isPublic = isPublic;
+    public Event(String id, String title, String date, String location, String createdBy, String description) {
+        this.id = id;
+        this.title = title;
         this.date = date;
-        this.organizer = organizer;
-        this.guestList = guestList;
-        this.budget = budget;
-        this.reminder = reminder;
+        this.location = location;
+        this.createdBy = createdBy;
+        this.description = description;
     }
 
-    // Getters and setters
     public String getId() {
         return id;
     }
@@ -47,36 +33,12 @@ public class Event {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isPublic() {
-        return isPublic;
-    }
-
-    public void setPublic(boolean isPublic) {
-        this.isPublic = isPublic;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDate() {
@@ -87,51 +49,39 @@ public class Event {
         this.date = date;
     }
 
-    public String getOrganizer() {
-        return organizer;
+    public String getLocation() {
+        return location;
     }
 
-    public void setOrganizer(String organizer) {
-        this.organizer = organizer;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public List<String> getGuestList() {
-        return guestList;
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public void setGuestList(List<String> guestList) {
-        this.guestList = guestList;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public double getBudget() {
-        return budget;
+    public String getDescription() {
+        return description;
     }
 
-    public void setBudget(double budget) {
-        this.budget = budget;
-    }
-
-    public String getReminder() {
-        return reminder;
-    }
-
-    public void setReminder(String reminder) {
-        this.reminder = reminder;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
         return "Event{" +
                 "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
+                ", date='" + date + '\'' +
                 ", location='" + location + '\'' +
+                ", createdBy='" + createdBy + '\'' +
                 ", description='" + description + '\'' +
-                ", isPublic=" + isPublic +
-                ", date=" + date +
-                ", organizer='" + organizer + '\'' +
-                ", guestList=" + guestList +
-                ", budget=" + budget +
-                ", reminder='" + reminder + '\'' +
                 '}';
     }
 }

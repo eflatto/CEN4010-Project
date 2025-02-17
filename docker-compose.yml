@@ -12,13 +12,17 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: root
       MONGO_INITDB_DATABASE: event_planner_db
     volumes:
-      - ./mongo-init/init.js:/docker-entrypoint-initdb.d/init.js:ro  # ✅ Ensure this is here
+      - ./mongo-init/init.js:/docker-entrypoint-initdb.d/init.js:ro
     networks:
       - my_network
-
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh --quiet mongodb:27017
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   springboot-app:
-    build: ./spring-boot  # ✅ Ensure this points to the spring-boot directory
+    build: ./spring-boot
     container_name: springboot-app
     restart: always
     ports:
@@ -26,22 +30,30 @@ services:
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://root:root@mongodb:27017/event_planner_db?authSource=admin
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy
     networks:
       - my_network
-
+    volumes:
+      - ./spring-boot/src:/app/src
+      - ./spring-boot/build:/app/build
+      - ~/.gradle:/home/gradle/.gradle  # Cache Gradle dependencies
+    command: sh -c "chmod +x ./gradlew && ./gradlew bootRun"
 
   frontend:
     build: ./frontend
     container_name: vite-frontend
     restart: always
     ports:
-      - "5173:5173"  # ✅ Expose Vite dev server
+      - "5173:5173"
     depends_on:
       - springboot-app
     networks:
       - my_network
-
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules  # Prevents node_modules from being overwritten
+    command: ["sh", "-c", "npm install && npm run dev -- --host"]
 
 networks:
   my_network:
