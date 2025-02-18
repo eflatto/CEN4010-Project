@@ -16,8 +16,8 @@ This is a **full-stack event planner application** built using **Spring Boot**, 
 ### **1. Clone the Repository**
 
 ```sh
-git clone https://github.com/your-repo/event-planner.git
-cd event-planner
+git clone https://github.com/Fran1211/CEN4010-Project.git
+
 
 ## 2. Install Dependencies
 
