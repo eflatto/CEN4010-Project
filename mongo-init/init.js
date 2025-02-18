@@ -18,7 +18,7 @@ db.createCollection("events");
 // Insert sample event data
 db.events.insertMany([
     {
-        name: "Tech Conference",
+        title: "Tech Conference",
         location: "San Francisco",
         description: "A large tech conference with industry leaders.",
         isPublic: true,
@@ -29,7 +29,7 @@ db.events.insertMany([
         reminder: "2025-03-10"
     },
     {
-        name: "Music Festival",
+        title: "Music Festival",
         location: "Los Angeles",
         description: "A weekend of live music and entertainment.",
         isPublic: true,

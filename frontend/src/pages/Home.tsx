@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // ✅ Import Link for navigation
+import { Link } from "react-router-dom";
+import "../css/home.css";
 
 interface Event {
     id: string;
@@ -21,31 +22,30 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="container mx-auto p-6">
+        <div className="container">
             {/* Navbar */}
-            <nav className="bg-blue-600 text-white py-4 px-6 flex justify-between items-center">
-                <h1 className="text-2xl font-bold">Event Planner</h1>
-                {/* ✅ Use Link instead of button to navigate to Create Event page */}
-                <Link to="/create-event" className="bg-white text-blue-600 px-4 py-2 rounded">
-                    Create Event
-                </Link>
+            <nav className="navbar">
+                <h1>Event Planner</h1>
+                <Link to="/create-event">Create Event</Link>
             </nav>
 
             {/* Events List */}
-            <div className="mt-6">
-                <h2 className="text-xl font-bold mb-4">Upcoming Events</h2>
+            <div>
+                <h2 className="upcoming-heading">Upcoming Events</h2>
                 {events.length === 0 ? (
-                    <p>No events found.</p>
+                    <p style={{ color: "#fff" }}>No events found.</p>
                 ) : (
-                    <ul>
+                    <div className="events-list">
                         {events.map((event) => (
-                            <li key={event.id} className="border p-4 mb-3 rounded shadow-md">
-                                <h3 className="text-lg font-semibold">{event.title}</h3>
-                                <p>{event.date} - {event.location}</p>
-                                <p className="text-gray-600">{event.description}</p>
-                            </li>
+                            <div key={event.id} className="event-card">
+                                <h3>{event.title}</h3>
+                                <p>
+                                    {new Date(event.date).toLocaleString()} - {event.location}
+                                </p>
+                                <p>{event.description}</p>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 )}
             </div>
         </div>
