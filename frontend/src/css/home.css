@@ -17,7 +17,7 @@ body {
 }
 
 /* Modern Navbar */
-.navbar {
+.bar {
     background-color: #9b59b6;
     color: #fff;
     padding: 1rem 2rem;
@@ -28,13 +28,13 @@ body {
     margin-bottom: 2rem;
 }
 
-.navbar h1 {
+.bar h1 {
     font-size: 2rem;
     font-weight: 600;
     margin: 0;
 }
 
-.navbar a {
+.bar a {
     background: #fff;
     color: #9b59b6;
     padding: 0.5rem 1rem;
@@ -44,7 +44,7 @@ body {
     transition: background 0.3s;
 }
 
-.navbar a:hover {
+.bar a:hover {
     background: #f2f2f2;
 }
 

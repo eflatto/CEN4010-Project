@@ -24,10 +24,10 @@ const Home = () => {
     return (
         <div className="container">
             {/* Navbar */}
-            <nav className="navbar">
+            <div className="bar">
                 <h1>Event Planner</h1>
                 <Link to="/create-event">Create Event</Link>
-            </nav>
+            </div>
 
             {/* Events List */}
             <div>
