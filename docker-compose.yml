@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-    mongodb:
+  mongodb:
     image: mongo
     container_name: my_mongodb
     restart: always
@@ -21,9 +21,11 @@ services:
       timeout: 5s
       retries: 10
 
-
-    springboot-app:
-    build: ./spring-boot
+  springboot-app:
+    build:
+      context: ./spring-boot
+      dockerfile: Dockerfile
+    image: springboot-app:latest  # ✅ Explicitly tag the image
     container_name: springboot-app
     restart: always
     ports:
@@ -36,11 +38,14 @@ services:
     networks:
       - my_network
     volumes:
-      - ~/.gradle:/home/gradle/.gradle
+      - ~/.gradle:/home/gradle/.gradle  # ✅ Cache Gradle dependencies
     command: sh -c "chmod +x ./gradlew && ./gradlew build --no-daemon && java -jar build/libs/*.jar"
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: vite-frontend:latest  # ✅ Explicitly tag frontend image
     container_name: vite-frontend
     restart: always
     ports:
