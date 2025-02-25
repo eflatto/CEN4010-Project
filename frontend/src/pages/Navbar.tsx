@@ -22,6 +22,9 @@ const Navbar = () => {
                     <li className="nav-item">
                         <a className="nav-link" href="http://localhost:5173/create-event">Create event</a>
                     </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="http://localhost:5173/login">Login</a>
+                    </li>
                     {/*<li className="nav-item dropdown">*/}
                     {/*    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"*/}
                     {/*       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}

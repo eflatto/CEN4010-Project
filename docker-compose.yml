@@ -37,7 +37,7 @@ services:
     volumes:
       - ./spring-boot/src:/app/src
       - ./spring-boot/build:/app/build
-      - ~/.gradle:/home/gradle/.gradle  # Cache Gradle dependencies
+      - ~/.gradle:/home/gradle/.gradle
     command: sh -c "chmod +x ./gradlew && ./gradlew bootRun"
 
   frontend:
@@ -52,8 +52,9 @@ services:
       - my_network
     volumes:
       - ./frontend:/app
-      - /app/node_modules  # Prevents node_modules from being overwritten
+      - /app/node_modules
     command: ["sh", "-c", "npm install && npm run dev -- --host"]
 
 networks:
   my_network:
+    driver: bridge
