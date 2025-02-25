@@ -5,7 +5,7 @@ This is a **full-stack event planner application** built using **Spring Boot**, 
 ## 🛠️ Tech Stack
 
 - **Backend**: Java, Spring Boot, MongoDB
-- **Frontend**: React (Vite)
+- **Frontend**: React (Vite) w/ TypeScript
 - **Database**: MongoDB (Dockerized)
 - **Containerization**: Docker & Docker Compose
 
