@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  mongodb:
+    mongodb:
     image: mongo
     container_name: my_mongodb
     restart: always
@@ -16,12 +16,13 @@ services:
     networks:
       - my_network
     healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongosh --quiet mongodb:27017
+      test: echo 'db.runCommand("ping")' | mongosh --quiet mongodb:27017 || exit 1
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 10
 
-  springboot-app:
+
+    springboot-app:
     build: ./spring-boot
     container_name: springboot-app
     restart: always
@@ -35,10 +36,8 @@ services:
     networks:
       - my_network
     volumes:
-      - ./spring-boot/src:/app/src
-      - ./spring-boot/build:/app/build
       - ~/.gradle:/home/gradle/.gradle
-    command: sh -c "chmod +x ./gradlew && ./gradlew bootRun"
+    command: sh -c "chmod +x ./gradlew && ./gradlew build --no-daemon && java -jar build/libs/*.jar"
 
   frontend:
     build: ./frontend
