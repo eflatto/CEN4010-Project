@@ -1,4 +1,4 @@
-# Event Planner App
+# Event Planner App  
 
 This is a **full-stack event planner application** built using **Spring Boot**, **MongoDB**, and **React**. The app allows users to create and view events, with a backend API handling data storage.
 
