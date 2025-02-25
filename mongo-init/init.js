@@ -1,6 +1,5 @@
-db = db.getSiblingDB("admin"); // Connect to the admin database
+db = db.getSiblingDB("admin");
 
-// Create a new user for event_planner_db with readWrite permissions
 db.createUser({
     user: "event_user",
     pwd: "event_password",
@@ -9,13 +8,10 @@ db.createUser({
     ]
 });
 
-// Switch to the event database
 db = db.getSiblingDB("event_planner_db");
 
-// Create the "events" collection
 db.createCollection("events");
 
-// Insert sample event data
 db.events.insertMany([
     {
         title: "Tech Conference",
